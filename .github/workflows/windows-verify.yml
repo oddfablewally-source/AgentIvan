@@ -17,18 +17,16 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        working-directory: agent-ivan
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
       - name: Run AgentIvan verification suite
-        working-directory: agent-ivan
         env:
           IVAN_DIR: ${{ github.workspace }}\ivan-core-brick
           IVAN_BASELINE: ${{ github.workspace }}\ivan_baseline.sha256
         run: |
-          python scripts\verify.py
+          python agent-ivan\scripts\verify.py
 
       - name: Run Brick 11 Windows workflow
         run: |
