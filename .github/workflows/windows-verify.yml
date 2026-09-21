@@ -18,11 +18,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Extract AgentIvan verification package
+      - name: Find and extract AgentIvan verification package
         shell: powershell
         run: |
+          $archives = @(Get-ChildItem -Path "." -File -Filter "*.zip")
+
+          if ($archives.Count -ne 1) {
+            Write-Error "Expected exactly one ZIP archive in the repository root, found $($archives.Count)."
+            $archives | ForEach-Object { Write-Host $_.FullName }
+            exit 1
+          }
+
+          $archive = $archives[0].FullName
+
+          Write-Host "Extracting: $archive"
+
           Expand-Archive `
-            -LiteralPath "agent-ivan-b11-windows-verify (1).zip" `
+            -LiteralPath $archive `
             -DestinationPath "." `
             -Force
 
