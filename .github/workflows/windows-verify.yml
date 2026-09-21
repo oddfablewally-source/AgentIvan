@@ -18,6 +18,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Extract AgentIvan verification package
+        shell: powershell
+        run: |
+          Expand-Archive `
+            -LiteralPath "agent-ivan-b11-windows-verify (1).zip" `
+            -DestinationPath "." `
+            -Force
+
       - name: Run AgentIvan verification gate
         shell: cmd
         env:
