@@ -1,33 +1,37 @@
-name: Windows Verify
+name: Test
 
 on:
-  workflow_dispatch:
+  push:
+  pull_request:
 
 jobs:
-  windows-verify:
+  test:
     runs-on: windows-latest
 
     steps:
-      - name: Check out repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.12
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          elif [ -f backend/requirements.txt ]; then
+            python -m pip install -r backend/requirements.txt
+          elif [ -f app/requirements.txt ]; then
+            python -m pip install -r app/requirements.txt
+          else
+            echo "ERROR: No requirements.txt found"
+            exit 1
+          fi
 
-      - name: Run AgentIvan verification suite
-        env:
-          IVAN_DIR: ${{ github.workspace }}\ivan-core-brick
-          IVAN_BASELINE: ${{ github.workspace }}\ivan_baseline.sha256
+      - name: Run tests
         run: |
-          python agent-ivan\scripts\verify.py
-
-      - name: Run Brick 11 Windows workflow
-        run: |
-          python ivan_b11_workflow.py
+          python -m pytest
