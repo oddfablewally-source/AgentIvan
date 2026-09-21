@@ -1,4 +1,4 @@
-name: Test
+name: Windows Verify
 
 on:
   workflow_dispatch:
@@ -18,13 +18,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run AgentIvan verification suite
-        env:
-          IVAN_DIR: ${{ github.workspace }}\ivan-core-brick
-          IVAN_BASELINE: ${{ github.workspace }}\ivan_baseline.sha256
+      - name: Run pytest
         run: |
-          python agent-ivan\scripts\verify.py
-
-      - name: Run Brick 11 Windows workflow
-        run: |
-          python ivan_b11_workflow.py
+          python -m pytest
