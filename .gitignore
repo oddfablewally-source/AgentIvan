@@ -1,0 +1,41 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# --- PyInstaller output ---
+*.spec.bak
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# --- OS ---
+Thumbs.db
+ehthumbs.db
+
+# --- App local data (never commit runtime databases/logs) ---
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+logs/
+appdata/
