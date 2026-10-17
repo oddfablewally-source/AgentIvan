@@ -1,5 +1,5 @@
 """
-Entry point for the Local AI Desktop Application.
+Entry point for the AgentIvan application.
 
 This module is what you run directly:
 

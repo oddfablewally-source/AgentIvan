@@ -1,6 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 """
-PyInstaller spec file for LocalAI Desktop.
+PyInstaller spec file for AgentIvan.
 
 Builds a onedir Windows executable with all resources bundled.
 
@@ -10,7 +10,7 @@ To build:
 Or use the build script:
     scripts\\build_windows.bat
 
-The output will be in dist/LocalAI-Desktop/
+The output will be in dist/AgentIvan/
 """
 
 import os
@@ -52,7 +52,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='LocalAI-Desktop',
+    name='AgentIvan',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -68,5 +68,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='LocalAI-Desktop',
+    name='AgentIvan',
 )

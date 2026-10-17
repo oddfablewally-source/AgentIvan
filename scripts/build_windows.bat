@@ -1,6 +1,6 @@
 @echo off
 REM ===========================================================================
-REM Build script for LocalAI Desktop Windows executable
+REM Build script for AgentIvan Windows executable
 REM
 REM Usage:
 REM   scripts\build_windows.bat
@@ -11,14 +11,14 @@ REM   - Virtual environment created and activated (or install globally)
 REM   - Dependencies installed: pip install -r requirements.txt
 REM
 REM Output:
-REM   dist\LocalAI-Desktop\LocalAI-Desktop.exe
+REM   dist\AgentIvan\AgentIvan.exe
 REM ===========================================================================
 
 setlocal
 
 echo.
 echo ============================================
-echo   LocalAI Desktop - Windows Build
+echo   AgentIvan - Windows Build
 echo ============================================
 echo.
 
@@ -65,10 +65,10 @@ echo ============================================
 echo   Build successful!
 echo ============================================
 echo.
-echo Output location: dist\LocalAI-Desktop\
-echo Executable:      dist\LocalAI-Desktop\LocalAI-Desktop.exe
+echo Output location: dist\AgentIvan\
+echo Executable:      dist\AgentIvan\AgentIvan.exe
 echo.
-echo You can distribute the entire dist\LocalAI-Desktop\ folder.
+echo You can distribute the entire dist\AgentIvan\ folder.
 echo.
 
 pause

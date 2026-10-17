@@ -22,7 +22,7 @@ import os
 import sys
 from pathlib import Path
 
-APP_NAME = "LocalAI Desktop"
+APP_NAME = "AgentIvan"
 APP_VERSION = "1.0.0"
 
 

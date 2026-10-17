@@ -1,4 +1,4 @@
-# LocalAI Desktop — Reusable Boilerplate
+# AgentIvan — Reusable Boilerplate
 
 > **Authoritative baseline:** [UNIVERSAL-BOILERPLATE.md](UNIVERSAL-BOILERPLATE.md)
 > is the locked specification of this boilerplate. It describes only what
@@ -31,8 +31,8 @@ A complete, runnable repository that provides:
 ### 1. Clone and set up virtual environment
 
 ```batch
-git clone <your-repo-url> local-ai-desktop
-cd local-ai-desktop
+git clone https://github.com/oddfablewally-source/AgentIvan agentivan
+cd agentivan
 python -m venv .venv
 .venv\Scripts\activate
 ```
@@ -74,14 +74,14 @@ Or manually:
 pyinstaller app.spec --noconfirm --clean
 ```
 
-The executable will be at `dist\LocalAI-Desktop\LocalAI-Desktop.exe`.
+The executable will be at `dist\AgentIvan\AgentIvan.exe`.
 
 ## How to Configure
 
 The application stores its configuration in:
 
 ```
-%LOCALAPPDATA%\LocalAI Desktop\config.json
+%LOCALAPPDATA%\AgentIvan\config.json
 ```
 
 You can configure:
@@ -96,13 +96,13 @@ You can configure:
 Configuration can be changed via the Settings dialog (File > Settings or Ctrl+,).
 
 You can also override any setting from the environment without touching the file.
-Variable names are `<PREFIX><KEY>` where the prefix derives from the app name
-(`LocalAI Desktop` → `LOCALAI_DESKTOP_`), for example:
+Variable names are `<PREFIX><KEY>` where the prefix derives from `APP_NAME`
+in `src/app/core/paths.py` (`AgentIvan` → `AGENTIVAN_`), for example:
 
 ```
-LOCALAI_DESKTOP_OLLAMA_HOST=http://192.168.1.10:11434
-LOCALAI_DESKTOP_OLLAMA_MODEL=mistral
-LOCALAI_DESKTOP_OLLAMA_TIMEOUT=30
+AGENTIVAN_OLLAMA_HOST=http://192.168.1.10:11434
+AGENTIVAN_OLLAMA_MODEL=mistral
+AGENTIVAN_OLLAMA_TIMEOUT=30
 ```
 
 Precedence: environment > config file > built-in defaults. Values are coerced
@@ -128,7 +128,7 @@ python -m src.app
 After building, run:
 
 ```batch
-dist\LocalAI-Desktop\LocalAI-Desktop.exe
+dist\AgentIvan\AgentIvan.exe
 ```
 
 ## How to Run Tests
@@ -162,17 +162,17 @@ scripts\build_windows.bat
 
 ### Output
 
-The build produces a `dist\LocalAI-Desktop\` directory containing:
+The build produces a `dist\AgentIvan\` directory containing:
 
-- `LocalAI-Desktop.exe` — the main executable
+- `AgentIvan.exe` — the main executable
 - Supporting libraries and resources
 
-Distribute the entire `dist\LocalAI-Desktop\` folder to users.
+Distribute the entire `dist\AgentIvan\` folder to users.
 
 ### Notes
 
 - **onedir** mode is used (not onefile) for faster startup and easier debugging.
-- The application stores user data (database, config, logs) in `%LOCALAPPDATA%\LocalAI Desktop\`, separate from the executable.
+- The application stores user data (database, config, logs) in `%LOCALAPPDATA%\AgentIvan\`, separate from the executable.
 - Resources (icons, etc.) are bundled and resolved correctly in both development and packaged modes.
 
 ## Project Structure
@@ -295,7 +295,7 @@ The QThread subclass approach with signals/slots is the simplest, most reliable 
 
 ### Why onedir packaging?
 
-Onedir mode provides faster startup, easier debugging, and simpler resource management compared to onefile. The entire `dist\LocalAI-Desktop\` folder is distributable.
+Onedir mode provides faster startup, easier debugging, and simpler resource management compared to onefile. The entire `dist\AgentIvan\` folder is distributable.
 
 ## Dependencies
 
